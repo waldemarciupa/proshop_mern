@@ -5,4 +5,14 @@ const users = [
         password: xxxx,
         isAdmin: true
     },
+    {
+        name: 'Johm Doe',
+        email: 'john@example.com',
+        password: xxxx,
+    },
+    {
+        name: 'Jane Doe',
+        email: 'jane@example.com',
+        password: xxxx,
+    },
 ]
