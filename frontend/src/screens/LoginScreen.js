@@ -7,9 +7,16 @@ import Loader from '../components/Loader'
 import { login } from '../actions/userActions'
 import FormContainer from '../components/FormContainer'
 
-const LoginScreen = () => {
+const LoginScreen = (location) => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
+
+    const redirect = location.search ? location.search.split('=')[1] : '/'
+
+    const submitHandler = (e) => {
+        e.preventDefault()
+        // DISPATCH LOGIN
+    }
 
     return (
         <FormContainer>
@@ -39,7 +46,7 @@ const LoginScreen = () => {
             </Form>
             <Row className='py-3'>
                 <Col>
-                    NewCustomer? <Link to={redirect ? `/register?redirect=${redirect}` : '/register'}>Register</Link>
+                    New Customer? <Link to={redirect ? `/register?redirect=${redirect}` : '/register'}>Register</Link>
                 </Col>
 
             </Row>
