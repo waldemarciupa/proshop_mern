@@ -7,7 +7,7 @@ import Loader from '../components/Loader'
 import { login } from '../actions/userActions'
 import FormContainer from '../components/FormContainer'
 
-const LoginScreen = (location) => {
+const LoginScreen = (location, history) => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
 
@@ -32,6 +32,8 @@ const LoginScreen = (location) => {
     return (
         <FormContainer>
             <h1>Sign In</h1>
+            {error && <Message variant='danger'>{error}</Message>}
+            {loading ? <Loader /> : ''}
             <Form onSubmit={submitHandler}>
                 <Form.Group controlId='email'>
                     <Form.Label>Email Adress</Form.Label>
