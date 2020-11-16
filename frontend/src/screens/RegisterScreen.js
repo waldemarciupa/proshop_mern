@@ -17,7 +17,7 @@ const RegisterScreen = ({ location, history }) => {
     const dispatch = useDispatch()
 
     const userRegister = useSelector((state) => state.userRegister)
-    const { loading, error, userInfo } = userLogin
+    const { loading, error, userInfo } = userRegister
 
     const redirect = location.search ? location.search.split('=')[1] : '/'
 
@@ -29,12 +29,17 @@ const RegisterScreen = ({ location, history }) => {
 
     const submitHandler = (e) => {
         e.preventDefault()
-        // DISPATCH REGISTER
+        if (password !== confirmPassword) {
+            setMessage('Passwords do not match')
+        } else {
+            dispatch(register(name, email, password))
+        }
     }
 
     return (
         <FormContainer>
             <h1>Sign Up</h1>
+            {message && <Message variant='danger'>{message}</Message>}
             {error && <Message variant='danger'>{error}</Message>}
             {loading ? <Loader /> : ''}
             <Form onSubmit={submitHandler}>
