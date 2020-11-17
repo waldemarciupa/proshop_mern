@@ -15,10 +15,10 @@ const ProfileScreen = ({ location, history }) => {
 
     const dispatch = useDispatch()
 
-    const userDetails = useSelector((state) => state.userRegister)
+    const userDetails = useSelector((state) => state.userDetails)
     const { loading, error, user } = userDetails
 
-    const userLogin = useSelector((state) => state.userRegister)
+    const userLogin = useSelector((state) => state.userLogin)
     const { userInfo } = userLogin
 
     useEffect(() => {
@@ -32,7 +32,7 @@ const ProfileScreen = ({ location, history }) => {
                 setEmail(user.email)
             }
         }
-    }, [dispatch, history, userInfo])
+    }, [dispatch, history, userInfo, user])
 
     const submitHandler = (e) => {
         e.preventDefault()
