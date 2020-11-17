@@ -22,17 +22,24 @@ const ProfileScreen = ({ location, history }) => {
     const { userInfo } = userLogin
 
     useEffect(() => {
-        if (userInfo) {
-            history.push(redirect)
+        if (!userInfo) {
+            history.push('/login')
+        } else {
+            if (!user.name) {
+                dispatch(getUserDetails('profile'))
+            } else {
+                setName(user.name)
+                setEmail(user.email)
+            }
         }
-    }, [history, userInfo, redirect])
+    }, [dispatch, history, userInfo])
 
     const submitHandler = (e) => {
         e.preventDefault()
         if (password !== confirmPassword) {
             setMessage('Passwords do not match')
         } else {
-            dispatch(register(name, email, password))
+            // DISPATCH UPDATE
         }
     }
 
