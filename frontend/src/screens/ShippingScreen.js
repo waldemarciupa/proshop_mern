@@ -24,6 +24,16 @@ const ShippingScreen = ({ history }) => {
                         onChange={(e) => setAddress(e.target.value)}
                     ></Form.Control>
                 </Form.Group>
+                <Form.Group controlId='address'>
+                    <Form.Label>City</Form.Label>
+                    <Form.Control
+                        type='text'
+                        placeholder='Enter city'
+                        value={city}
+                        required
+                        onChange={(e) => setCity(e.target.value)}
+                    ></Form.Control>
+                </Form.Group>
             </Form>
         </FormContainer>
     )
