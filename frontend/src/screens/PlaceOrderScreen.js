@@ -5,10 +5,26 @@ import Message from '../components/Message'
 import CheckoutSteps from '../components/CheckoutSteps'
 
 const PlaceOrderScreen = () => {
-    return (
-        <div>
+    const cart = useSelector(state => state.cart)
 
-        </div>
+    return (
+        <>
+            <CheckoutSteps step1 step2 step3 step4 />
+            <Row>
+                <Col md={8}>
+                    <ListGroup variant='flush'>
+                        <ListGroup.Item>
+                            <h2>Shipping</h2>
+                            <p>
+                                <strong>Address:</strong>
+                                {cart.shippingAddress.address}, {cart.shippingAddress.cit} {cart.shippingAddress.postalCode},{' '}{cart.shippingAddress.country}
+                            </p>
+                        </ListGroup.Item>
+                    </ListGroup>
+                </Col>
+            </Row>
+
+        </>
     )
 }
 
