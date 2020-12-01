@@ -39,6 +39,9 @@ const PlaceOrderScreen = () => {
                                                 <Col>
                                                     <Link to={`/product/${item.product}`}>{item.name}</Link>
                                                 </Col>
+                                                <Col md={4}>
+                                                    {item.qty} x ${item.price} = ${item.qty * item.price}
+                                                </Col>
                                             </Row>
                                         </ListGroup.Item>
                                     ))}
