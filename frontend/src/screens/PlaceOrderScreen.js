@@ -7,6 +7,9 @@ import CheckoutSteps from '../components/CheckoutSteps'
 import { createOrder } from '../actions/orderActions'
 
 const PlaceOrderScreen = () => {
+
+    const dispatch = useDispatch()
+
     const cart = useSelector(state => state.cart)
 
     // CALCULATE PRICES
@@ -20,7 +23,15 @@ const PlaceOrderScreen = () => {
     cart.totalPrice = (Number(cart.itemsPrice) + Number(cart.shippingPrice) + Number(cart.taxPrice)).toFixed(2)
 
     const placeOrderHandler = () => {
-        console.log('order');
+        dispatch(createOrder({
+            orderItems: cart.cartItems,
+            shippingAddress: cart.shippingAddress,
+            paymentMethod: cart.paymentMethod,
+            itemsPrice: cart.itemsPrice,
+            shippingPrice: cart.shippingPrice,
+            taxPrice: cart.taxPrice,
+            totalPrice: cart.totalPrice,
+        }))
     }
 
     return (
