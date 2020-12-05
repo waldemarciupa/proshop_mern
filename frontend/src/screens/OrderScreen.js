@@ -7,12 +7,8 @@ import Loader from '../components/Loader'
 import { getOrderDetails } from '../actions/orderActions'
 
 const OrderScreen = ({ match }) => {
-
     const orderId = match.params.id
-
     const dispatch = useDispatch()
-
-
     const orderDetails = useSelector(state => state.orderDetails)
     const { order, loading, error } = orderDetails
 
@@ -41,6 +37,7 @@ const OrderScreen = ({ match }) => {
                             <ListGroup.Item>
                                 <h2>Shipping</h2>
                                 <strong>Name: </strong> {order.user.name}
+                                <a href={`mailto:${order.user.email}`}>{order.user.email}</a>
                                 <p>
                                     <strong>Address:</strong>
                                     {order.shippingAddress.address}, {order.shippingAddress.city} {order.shippingAddress.postalCode},{' '}{order.shippingAddress.country}
