@@ -8,7 +8,7 @@ import {
     ORDER_DETAILS_FAIL
 } from '../constants/orderConstants'
 
-export const createOrder = (user) => async (dispatch, getState) => {
+export const createOrder = (order) => async (dispatch, getState) => {
     try {
         dispatch({
             type: ORDER_CREATE_REQUEST
