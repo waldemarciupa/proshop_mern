@@ -129,22 +129,24 @@ export const listMyOrders = () => async (
 ) => {
     try {
         dispatch({
-            type: ORDER_LIST_MY_REQUEST
+            type: ORDER_LIST_MY_REQUEST,
         })
 
-        const { userLogin: { userInfo } } = getState()
+        const {
+            userLogin: { userInfo },
+        } = getState()
 
         const config = {
             headers: {
-                Authorization: `Bearer ${userInfo.token}`
-            }
+                Authorization: `Bearer ${userInfo.token}`,
+            },
         }
 
         const { data } = await axios.get(`/api/orders/myorders`, config)
 
         dispatch({
             type: ORDER_LIST_MY_SUCCESS,
-            payload: data
+            payload: data,
         })
     } catch (error) {
         dispatch({
