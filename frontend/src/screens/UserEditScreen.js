@@ -20,8 +20,8 @@ const UserEditScreen = ({ match, history }) => {
     const userDetails = useSelector((state) => state.userDetails)
     const { loading, error, user } = userDetails
 
-    const userUpdate = useSelector((state) => state.userDetails)
-    const { loading: loadingUpdate, error: errorUpdate, success: successUpdate } = userDetails
+    const userUpdate = useSelector((state) => state.userUpdate)
+    const { loading: loadingUpdate, error: errorUpdate, success: successUpdate } = userUpdate
 
     useEffect(() => {
         if (successUpdate) {
@@ -50,6 +50,8 @@ const UserEditScreen = ({ match, history }) => {
             </Link>
             <FormContainer>
                 <h1>Update User</h1>
+                {loadingUpdate && <Loader />}
+                {errorUpdate && <Message variant='danger'>{errorUpdate}</Message>}
                 {loading ? <Loader /> : error ? <Message variant='danger'>{error}</Message> : (
                     <Form onSubmit={submitHandler}>
                         <Form.Group controlId='name'>
